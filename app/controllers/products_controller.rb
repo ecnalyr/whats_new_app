@@ -41,23 +41,32 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     # @product = Product.new(params[:product])
-    @product = Product.find_or_create_by_sku(params[:sku])
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+    @product = Product.find_or_initialize_by_sku(params[:sku])
+    if @product.new_record?
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.json { render json: @product, status: :created, location: @product }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      #session[:product] = @product # caching may make this useless
+      update
     end
   end
 
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
+    if params[:id] != nil
+      @product = Product.find(params[:id])
+    else
+      @product = Product.find_or_initialize_by_sku(params[:sku])
+      # @product = session[:product] # caching may make this useless
+    end
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
