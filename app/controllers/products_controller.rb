@@ -53,7 +53,6 @@ class ProductsController < ApplicationController
         end
       end
     else
-      #session[:product] = @product # caching may make this useless
       update
     end
   end
@@ -61,13 +60,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    if params[:id] != nil
-      @product = Product.find(params[:id])
-    else
-      @product = Product.find_or_initialize_by_sku(params[:sku])
-      # @product = session[:product] # caching may make this useless
-    end
-
+    @product ||= Product.find_or_initialize_by_sku(params[:sku])
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
