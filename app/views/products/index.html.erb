@@ -14,7 +14,7 @@
   </tr>
 
 <% @products.each do |product| %>
-  <tr>
+  <tr class="product_row">
     <td><%= product.name %></td>
     <td><%= number_to_currency(product.price) %></td>
     <td><%= product.scrape_time %></td>
