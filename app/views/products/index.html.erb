@@ -1,29 +1,19 @@
 <h1>Listing products</h1>
 
-<table>
+<table class="table table-bordered table-condensed">
   <tr>
     <th><%= sortable "name" %></th>
     <th><%= sortable "price" %></th>
     <th><%= sortable "scrape_time", "Scrape Time" %></th>
-    <th>Link</th>
-    <th>Imagelink</th>
     <th>Sku</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @products.each do |product| %>
   <tr class="product_row">
-    <td><%= product.name %></td>
+    <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %><%= product.name %></td>
     <td><%= number_to_currency(product.price) %></td>
-    <td><%= product.scrape_time %></td>
-    <td><%= link_to(product.link, product.link) %></td>
-    <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %></td>
+    <td><%= product.scrape_time.localtime.to_s(:short) %></td>
     <td><%= product.sku %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
