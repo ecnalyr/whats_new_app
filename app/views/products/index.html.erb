@@ -2,6 +2,7 @@
 
 <table class="table table-bordered table-condensed">
   <tr>
+    <th><%= sortable "store" %></th>
     <th><%= sortable "name" %></th>
     <th><%= sortable "price" %></th>
     <th><%= sortable "scrape_time", "Scrape Time" %></th>
@@ -10,6 +11,7 @@
 
 <% @products.each do |product| %>
   <tr class="product_row">
+    <td><%= product.store %></td>
     <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %><%= product.name %></td>
     <td><%= number_to_currency(product.price) %></td>
     <td><%= product.scrape_time.localtime.to_s(:short) %></td>
