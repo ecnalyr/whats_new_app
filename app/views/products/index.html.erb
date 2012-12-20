@@ -1,5 +1,5 @@
 <h1>Listing products</h1>
-
+<h1><%= @last %></h1>
 <table class="table table-bordered table-condensed">
   <tr>
     <th><%= sortable "store" %></th>
@@ -10,11 +10,12 @@
   </tr>
 
 <% @products.each do |product| %>
-  <tr class="product_row">
+  <tr class="<%= product.updated_at  >= @last_visit ? 'product_row success' : 'product_row' %>" >
     <td><%= product.store %></td>
-    <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %><%= product.name %></td>
+    <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %>
+        <%= product.name %></td>
     <td><%= number_to_currency(product.price) %></td>
-    <td><%= product.scrape_time.localtime.to_s(:short) %></td>
+    <td><%= product.scrape_time.localtime.to_s(:short) %> <%= product.scrape_time%></td>
     <td><%= product.sku %></td>
   </tr>
 <% end %>

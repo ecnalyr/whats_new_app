@@ -1,13 +1,17 @@
 class ProductsController < ApplicationController
+  after_filter :update_last_visit
+
   helper_method :sort_column, :sort_direction
+
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.order(sort_column + " " + sort_direction)
-
+    @last_visit = cookies[:last_visit]
+    now = Time.now.utc
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { flash[:notice] = "Last visit: #{@last_visit} , This visit: #{now}"}# index.html.erb
       format.json { render json: @products }
     end
   end
@@ -89,11 +93,11 @@ class ProductsController < ApplicationController
   private
   
   def sort_column
-    Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "scrape_time"
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
   
 end
