@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     # @product = Product.new(params[:product])
-    @product = Product.find_or_initialize_by_sku(params[:sku])
+    @product = Product.find_or_initialize_by_sku(params[:product])
     if @product.new_record?
       respond_to do |format|
         if @product.save
