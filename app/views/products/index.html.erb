@@ -12,7 +12,7 @@
 <% @products.each do |product| %>
   <tr class="<%= product.updated_at  >= @last_visit ? 'product_row success' : 'product_row' %>" >
     <td><%= product.store %></td>
-    <td><%= link_to image_tag(product.imageLink, :alt => product.name), product.link %>
+    <td><%= link_to image_tag(product.imageLink, :alt => product.name, :size => "135x135"), product.link %>
         <%= product.name %></td>
     <td><%= number_to_currency(product.price) %></td>
     <td><%= product.scrape_time.localtime.to_s(:short) %> <%= product.scrape_time%></td>
