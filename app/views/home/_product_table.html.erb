@@ -1,0 +1,18 @@
+<table class="table table-condensed">
+  <tr>
+    <th>Store</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Scrape Time</th>
+  </tr>
+
+  <% products.each do |product| %> 
+    <tr>
+      <td><%= product.store %></td>
+      <td><%= link_to product.name, product.link %></td>
+      <td><%= number_to_currency(product.price) %></td>
+      <td><%= product.scrape_time.localtime.to_s(:short) %> <%= product.scrape_time%></td>
+    </tr>
+  <% end %>
+</table>
+
