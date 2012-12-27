@@ -93,7 +93,7 @@ class ProductsController < ApplicationController
   private
   
   def sort_column
-    Product.column_names.include?(params[:sort]) ? params[:sort] : "scrape_time"
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
   
   def sort_direction

@@ -11,6 +11,6 @@ Background:
 Scenario: User views and sorts the catalog
     When user visits the Catalog page
     Then user should see 5 products
-    Then user should see "Product1" before "Product2"
-    And user clicks "Name"
     Then user should see "Product2" before "Product1"
+    And user clicks "Name"
+    Then user should see "Product1" before "Product2"

@@ -8,7 +8,6 @@ FactoryGirl.define do
   factory :product do
     name
     price "9.99"
-    scrape_time "2012-12-14 09:37:01"
     link "MyString"
     imageLink "MyString"
     sku "MyString"
