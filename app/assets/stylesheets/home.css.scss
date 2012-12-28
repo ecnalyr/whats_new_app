@@ -1,3 +1,20 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.products {
+    border-style:dotted;
+    border-width:1px;
+}
+ul.products li {
+    width: 215px;
+    height: 315px;
+    display: inline-block;
+    vertical-align: top;
+    border-style:dashed;
+    border-width:1px;
+}
+
+li.new {
+    background: yellow;
+}

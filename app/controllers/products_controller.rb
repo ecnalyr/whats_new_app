@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.order(sort_column + " " + sort_direction)
-    @last_visit = cookies[:last_visit]
+    @last_visit = Time.parse(cookies[:last_visit]).utc - 3.minutes
     now = Time.now.utc
     respond_to do |format|
       format.html { flash[:notice] = "Last visit: #{@last_visit} , This visit: #{now}"}# index.html.erb

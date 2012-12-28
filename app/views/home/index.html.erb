@@ -1,3 +1,3 @@
 <% @products.each do|date, products_for_one_day| %>
-  <%= render :partial => 'product_table', :locals => { :products => products_for_one_day, :date => date } %>
+  <%= render :partial => 'product_list', :locals => { :products => products_for_one_day, :date => date } %>
 <% end %>

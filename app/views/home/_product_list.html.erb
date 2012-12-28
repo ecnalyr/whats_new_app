@@ -1,0 +1,14 @@
+<ul class="products">
+    <h4> <%= date %> </h4>
+    <% products.each do |product| %> 
+      <li>
+        <div>
+            <span class="label label-info"><%= product.store %></span>
+            <%= new_item_badge(product.created_at, @last_visit) %>
+        </div>
+        <%= link_to image_tag(product.imageLink, :alt => product.name, :size => "135x135"), product.link %>
+        <h5><%= link_to product.name, product.link %></h5>
+        <p><%= number_to_currency(product.price) %></p>
+      </li>
+    <% end %>
+</ul>
