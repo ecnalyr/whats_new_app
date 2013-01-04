@@ -3,16 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 ul.products {
-    border-style:dotted;
-    border-width:1px;
+    border-style:solid;
+    border-width:10px;
 }
 ul.products li {
     width: 215px;
     height: 315px;
     display: inline-block;
     vertical-align: top;
-    border-style:dashed;
-    border-width:1px;
+    border: 1px solid #F7F7F7;
+    text-align: center;
 }
 
 li.new {
