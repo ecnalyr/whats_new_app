@@ -1,7 +1,9 @@
-<h4> <%= store %>: </h4>
-<ul class="store_summary" id= "<%= store %>"
-    <% products.take(16).each do |product| %>
-        <!-- #start product partial -->
-        <%= render :partial => 'product_summary', :locals => { :product => product } %>
-    <% end %>
-</ul>
+<div class="summary">
+    <h4> <%= store %>: </h4>
+    <ul class="store_summary" id= "<%= store %>"
+        <% products.take(16).each do |product| %>
+            <!-- #start product partial -->
+            <%= render :partial => 'product_summary', :locals => { :product => product } %>
+        <% end %>
+    </ul>
+</div>

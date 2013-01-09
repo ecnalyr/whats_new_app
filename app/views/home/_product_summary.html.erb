@@ -1,9 +1,6 @@
 <li class="product_summary">
-  <div>
-      <span class="label label-info"><%= product.store %></span>
-      <%= new_item_badge(product.created_at, @last_visit) %>
-  </div>
-  <%= link_to image_tag(product.imageLink, :alt => product.name, :size => "135x135"), product.link %>
-    <h5><%= link_to product.name, product.link %></h5>
-  <p><%= number_to_currency(product.price) %></p>
+  <%= link_to image_tag(product.imageLink, :alt => product.name), product.link %>
+  <span class="name"><%= link_to product.name.truncate(25), product.link %></span>
+  <span class="price"><%= number_to_currency(product.price) %></span>
+  <%= new_item_badge(product.created_at, @last_visit) %>
 </li>
