@@ -1,0 +1,3 @@
+<% @products.each do|store, products_for_one_store| %>
+  <%= render :partial => 'store_summary', :locals => { :products => products_for_one_store, :store => store } %>
+<% end %>

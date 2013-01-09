@@ -10,10 +10,11 @@ When /^user visits the Home page$/ do
   visit('/')
 end
 
-Then /^user should see (\d+) store summaries$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^user should see (\d+) store summaries$/ do |number_of_stores|
+  page.should have_css("ul.store_summary", :count => 2)
 end
 
-Then /^each summary should contain (\d+) product summaries$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^each summary should contain (\d+) product summaries$/ do |number_of_products|
+  page.should have_css('ul#1 li', :count => number_of_products.to_i)
+  page.should have_css('ul#2 li', :count => number_of_products.to_i)
 end
