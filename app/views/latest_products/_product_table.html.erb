@@ -1,0 +1,19 @@
+<h4> <%= date %> </h4>
+<table class="table table-condensed">
+  <tr>
+    <th>Store</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Created At</th>
+  </tr>
+
+  <% products.each do |product| %> 
+    <tr>
+      <td><%= product.store %></td>
+      <td><%= link_to product.name, product.link %></td>
+      <td><%= number_to_currency(product.price) %></td>
+      <td><%= product.created_at.localtime.to_s(:short) %> <%= product.created_at%></td>
+    </tr>
+  <% end %>
+</table>
+

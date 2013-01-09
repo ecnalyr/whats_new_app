@@ -1,0 +1,13 @@
+<%= form_tag 'latest_products', :method => :get, :id => 'stores_form' do %>
+    View products from these stores:: 
+    <% @all_stores.each do |store| %>
+        <%= store %>
+        <%= check_box_tag "stores[#{store}]", 1, @selected_stores.include?(store), :id => "stores_#{store}" %>
+    <% end %> 
+    <%= submit_tag 'Refresh', :id => 'stores_submit', :class => 'btn btn-mini' %>
+<% end %>
+
+
+<% @products.each do|date, products_for_one_day| %>
+  <%= render :partial => 'product_list', :locals => { :products => products_for_one_day, :date => date } %>
+<% end %>
