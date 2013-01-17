@@ -11,7 +11,8 @@ class LatestProductsController < ApplicationController
       @selected_stores = Hash[@all_stores.map {|store| [store, store]}]
     end
     if params[:stores] != session[:stores]
-      session[:stores] = @selected_stores
+      # session[:stores] = @selected_stores
+      session[:stores] = params[:stores]
       redirect_to :stores => @selected_stores and return
     end
     # There is a limit of 150 items here for development reasons
@@ -20,6 +21,9 @@ class LatestProductsController < ApplicationController
     @products = Product.order("created_at desc").limit(150).find_all_by_store(@selected_stores.keys).group_by { |product| product.created_at.to_date}
     @last_visit = Time.parse(cookies[:last_visit]).utc - last_visit_buffer.minutes
     now = Time.now.utc
+
+    logger.info(params)
+    logger.info("^^^ THERE WERE YOUR PARAMS AHHHH!!!!!")
 
     respond_to do |format|
       format.html {}# index.html.erb
