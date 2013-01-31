@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/ecnalyr/whats_new_app)]
+"(classname)!https://codeclimate.com/badge.png(Code Climate)!(title tooltip)":https://codeclimate.com/github/ecnalyr/whats_new_app
 
 h1. Whats New App
 
