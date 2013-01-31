@@ -11,7 +11,6 @@ class LatestProductsController < ApplicationController
       @selected_stores = Hash[@all_stores.map {|store| [store, store]}]
     end
     if params[:stores] != session[:stores]
-      # session[:stores] = @selected_stores
       session[:stores] = params[:stores]
       redirect_to :stores => @selected_stores and return
     end

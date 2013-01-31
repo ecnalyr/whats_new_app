@@ -24,18 +24,24 @@ describe ProductsController do
   # Product. As you add validations to Product, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { 
+      "name" => "MyString",
+      "store" => "MyStore",
+      "price" => 1.24,
+     }
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProductsController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {
+    }
   end
 
   describe "GET index" do
     it "assigns all products as @products" do
+      request.cookies['last_visit'] = Time.now.utc.to_s
       product = Product.create! valid_attributes
       get :index, {}, valid_session
       assigns(:products).should eq([product])
