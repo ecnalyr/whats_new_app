@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
-  before_filter :first_visit
   protect_from_forgery
+  before_filter :first_visit
 
   def first_visit
-    if cookies[:last_visit] == "" || nil
+    logger.info(cookies[:last_visit])
+    if cookies[:last_visit] == nil || ""
       update_last_visit
-    end
       logger.info("UPDATED COOKIE")
+    else
+      logger.info("DID NOT UPDATE COOKIE")
     end
+  end
 
   def update_last_visit
-    cookies.permanent[:last_visit] = Time.now.utc
-    logger.info("you printed")
+    cookies.permanent[:last_visit] = Time.now.utc.to_s
+    logger.info("you just updated last_visit cookie")
   end
 
 end

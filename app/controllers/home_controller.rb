@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  before_filter :first_visit
   after_filter :update_last_visit
 
   def index
