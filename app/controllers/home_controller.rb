@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   after_filter :update_last_visit
 
   def index
-    last_visit_buffer = 30
+    last_visit_buffer = 30000
 
     @products = Product.order("created_at desc").group_by { |product| product.store}
 

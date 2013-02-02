@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def first_visit
     logger.info(cookies[:last_visit])
-    if cookies[:last_visit] == nil || ""
+    if cookies[:last_visit].blank?
       update_last_visit
       logger.info("UPDATED COOKIE")
     else
