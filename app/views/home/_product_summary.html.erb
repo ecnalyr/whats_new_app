@@ -1,4 +1,4 @@
-<li class="product_summary">
+<li class="product_summary row-fluid">
   <%= link_to image_tag(product.imageLink, :alt => product.name), product.link %>
   <span class="name"><%= link_to product.name.truncate(25), product.link %></span>
   <span class="price"><%= number_to_currency(product.price) %></span>
