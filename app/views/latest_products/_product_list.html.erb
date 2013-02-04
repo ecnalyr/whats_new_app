@@ -1,4 +1,4 @@
-<h4> <%= date %>: </h4>
+<h4><%= date.strftime("%A, %B #{date.day.ordinalize}") %>: </h4>
 <ul class="products">
     <% products.each do |product| %> 
       <li>
@@ -12,3 +12,4 @@
       </li>
     <% end %>
 </ul>
+<hr>

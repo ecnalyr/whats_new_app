@@ -6,4 +6,5 @@
             <%= render :partial => 'product_summary', :locals => { :product => product } %>
         <% end %>
     </ul>
+    <span class="store_link clearfix"><%= link_to "View all products from #{store}", latest_products_path(:stores => { store.to_s => 1}) %></span>
 </div>

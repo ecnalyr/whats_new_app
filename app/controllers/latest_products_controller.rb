@@ -3,6 +3,7 @@ class LatestProductsController < ApplicationController
 
   def index
     last_visit_buffer = 30
+    @number_of_products = 150
     
     @all_stores = Product.all_stores
     @selected_stores = params[:stores] || session[:stores] || {}
@@ -17,7 +18,7 @@ class LatestProductsController < ApplicationController
     # There is a limit of 150 items here for development reasons
     #   - Loading every single item in the database plus their pictures is stressful.
     #   - this needs to be moved to a variable somewhere.
-    @products = Product.order("created_at desc").limit(150).find_all_by_store(@selected_stores.keys).group_by { |product| product.created_at.to_date}
+    @products = Product.order("created_at desc").limit(@number_of_products).find_all_by_store(@selected_stores.keys).group_by { |product| product.created_at.to_date}
     @last_visit = Time.parse(cookies[:last_visit]).utc - last_visit_buffer.minutes
     now = Time.now.utc
 
