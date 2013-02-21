@@ -1,0 +1,14 @@
+<h4><%= date.strftime("%A, %B #{date.day.ordinalize}") %>: </h4>
+<ul class="store_summary">
+    <% products.each do |product| %> 
+      <li class="product_summary row-fluid">
+          <span class="description">
+            <%= link_to image_tag(product.imageLink, :alt => product.name), product.link %>
+            <span class="name"><%= link_to product.name.truncate(20), product.link %></span>
+            <span class="price"><%= number_to_currency(product.price) %></span>
+          </span>
+          <%= new_item_badge(product.created_at, @last_visit) %>
+       </li>
+    <% end %>
+</ul>
+<hr>

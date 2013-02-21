@@ -7,9 +7,14 @@
     <%= submit_tag 'Refresh', :id => 'stores_submit', :class => 'btn btn-mini' %>
 <% end %>
 
+<div class="latest_products_views">
+    Switch View:
+    <span><%= link_to_unless params[:view] == "grid", '', params.merge(:view => "grid", :page => nil), :title => "Full View", :class => "icon-th-large" %></span>
+    <span><%= link_to_unless params[:view] == "list", '', params.merge(:view => "list", :page => nil), :title => "List View", :class => "icon-list"%></span>
+</div>
 <p>Showing the <%= @number_of_products %> most recent products.</p>
 
 <% @products.each do|date, products_for_one_day| %>
-  <%= render :partial => 'product_list', :locals => { :products => products_for_one_day, :date => date } %>
+  <%= render :partial => @partial, :locals => { :products => products_for_one_day, :date => date } %>
 <% end %>
 
